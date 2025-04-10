@@ -236,14 +236,16 @@ main {
 
 .card-content h3 {
     color: #ffffff;
-    margin-bottom: 0.3rem;
-    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 .card-content p {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 .card-arrow {
@@ -278,10 +280,11 @@ main {
     color: #2c3e50;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.7rem;
     border-bottom: 2px solid #eee;
     display: flex;
     align-items: center;
+    font-weight: 700;
 }
 
 .loan-info h2 .icon {
@@ -316,13 +319,15 @@ main {
 .loan-link-item h3 {
     color: #2c3e50;
     font-size: 1.1rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    font-weight: 600;
 }
 
 .loan-link-item p {
     color: #666;
-    font-size: 0.85rem;
-    line-height: 1.3;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 footer {
@@ -495,4 +500,132 @@ footer {
     .loan-link-item p {
         font-size: 0.8rem;
     }
+}
+
+/* 테이블 스타일 개선 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    border: 1px solid #eee;
+    table-layout: fixed; /* 고정 너비 테이블 레이아웃 */
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #f5f7f9;
+    font-weight: 600;
+    color: #333;
+}
+
+/* 테이블 내 컬럼 너비 설정 */
+table .col-date, 
+table th:nth-child(1), 
+table td:nth-child(1) {
+    width: 15%;
+}
+
+table .col-views, 
+table th:nth-child(2), 
+table td:nth-child(2) {
+    width: 10%;
+}
+
+table .col-actions, 
+table th:nth-child(3), 
+table td:nth-child(3) {
+    width: 10%;
+}
+
+table .col-title, 
+table th:nth-child(4), 
+table td:nth-child(4) {
+    width: 65%;
+    text-align: left;
+}
+
+/* 각 열별 정렬 설정 */
+th:first-child, td:first-child {
+    text-align: center;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    text-align: center;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    text-align: center;
+}
+
+/* 테이블 행 호버 효과 */
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* 테이블 내 버튼 스타일 */
+.table-btn {
+    background: none;
+    border: none;
+    color: #3498db;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    margin: 0 0.2rem;
+}
+
+.table-btn:hover {
+    color: #2980b9;
+}
+
+/* 테이블 내 아이콘 정렬 */
+td img, td svg, td .icon {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* 체크박스 정렬 */
+td input[type="checkbox"] {
+    margin: 0 auto;
+    display: block;
+}
+
+/* 테이블 제목 영역 */
+.table-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* 페이지네이션 영역 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 0.5rem;
+}
+
+.pagination-btn {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagination-btn:hover, 
+.pagination-btn.active {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
 }
