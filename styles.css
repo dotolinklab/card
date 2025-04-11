@@ -629,3 +629,24 @@ td input[type="checkbox"] {
     color: #fff;
     border-color: #3498db;
 }
+
+/* 애드센스 광고 영역 스타일 */
+.ad-container {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.adsense-banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 애드센스 광고 반응형 설정 */
+@media (max-width: 1140px) {
+    .ad-container {
+        padding: 0 15px;
+    }
+}

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingOverlay.style.display = 'flex';
             
             // 카운트다운 시작
-            let seconds = 5;
+            let seconds = 3;
             redirectCounter.textContent = `${seconds}초 후 자동으로 이동합니다`;
             
             const countdown = setInterval(() => {
