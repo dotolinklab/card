@@ -121,16 +121,39 @@ nav {
     display: flex;
     justify-content: space-between;
     width: 1100px; /* 전체 컨테이너 너비 */
+    position: relative; /* 추가 */
+    padding: 0; /* 패딩 제거 */
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .logo-container {
     width: 800px; /* 메인 배너와 동일한 너비 */
+    padding-left: 15px; /* 로고 왼쪽 여백 */
 }
 
 .menu-container {
-    width: 300px; /* 대출정보와 동일한 너비 */
-    display: flex;
-    justify-content: flex-end; /* 우측 정렬 */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 999;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.menu-container.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .logo {
@@ -147,18 +170,36 @@ nav {
 
 .menu {
     display: flex;
+    flex-direction: column;
     list-style: none;
-    padding-right: 0; /* 우측 패딩 제거 */
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .menu li {
-    margin-left: 2rem;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
 }
 
-.menu a {
+.menu li:last-child {
+    border-bottom: none;
+}
+
+.menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
     text-decoration: none;
-    color: #2c3e50;
-    font-weight: 500;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.menu li a:hover {
+    background-color: #f5f5f5;
+    color: #000077;
 }
 
 /* 메인 레이아웃 컨테이너 */
@@ -351,12 +392,53 @@ footer {
 
 /* 모바일 메뉴 토글 버튼 */
 .menu-toggle {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
-    font-size: 1.5rem;
     cursor: pointer;
-    color: #2c3e50;
+    padding: 10px;
+    z-index: 1000;
+    position: absolute; /* 절대 위치로 변경 */
+    top: 50%; /* 상단에서 50% 위치 */
+    right: calc(100% - 800px + 15px); /* 메인 배너 우측 끝에서 15px 위치 */
+    transform: translateY(-50%); /* 중앙 정렬을 위한 위치 조정 */
+}
+
+.hamburger-icon {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: #000077;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* 햄버거 메뉴 열림 상태 스타일 */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* 메뉴 오버레이 */
+.menu-overlay {
+    display: none;
 }
 
 /* 로딩 오버레이 스타일 */
@@ -405,6 +487,19 @@ footer {
         width: 95%;
     }
     
+    .nav-container {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .logo-container {
+        padding-left: 15px;
+    }
+    
+    .menu-toggle {
+        right: 15px; /* 작은 화면에서는 컨테이너 우측 끝으로 */
+    }
+    
     .main-width {
         width: 100% !important;
     }
@@ -438,35 +533,35 @@ footer {
 
 @media (max-width: 840px) {
     .menu-toggle {
-        display: block;
+        display: flex;
         position: absolute;
-        right: 5%;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .menu-container {
+        top: 60px;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
     }
     
     .menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
         flex-direction: column;
-        background-color: #fff;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        padding: 1rem 0;
+        width: 100%;
     }
     
     .menu li {
         margin: 0;
         text-align: center;
+        border-bottom: 1px solid #eee;
     }
     
-    .menu a {
+    .menu li a {
+        padding: 15px 20px;
         display: block;
-        padding: 0.5rem 0;
-    }
-    
-    .menu.active {
-        display: flex;
+        width: 100%;
     }
 }
 
@@ -648,5 +743,14 @@ td input[type="checkbox"] {
 @media (max-width: 1140px) {
     .ad-container {
         padding: 0 15px;
+    }
+}
+
+/* 모바일 및 데스크톱 반응형 설정 */
+@media (min-width: 841px) {
+    .menu-container {
+        left: auto; /* 오른쪽 정렬 유지 */
+        right: calc(100% - 800px); /* 메인 배너 우측 끝에 맞춤 */
+        max-width: 250px;
     }
 }
