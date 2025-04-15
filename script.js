@@ -29,31 +29,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 햄버거 메뉴 토글 기능 - 드롭다운 방식
+    // 햄버거 메뉴 토글 버튼 클릭 시 Supabase로 연결
     const menuToggle = document.getElementById('menu-toggle');
-    const menuContainer = document.getElementById('menu-container');
     
-    // 메뉴 토글 이벤트
+    // 메뉴 토글 이벤트 - Supabase로 연결
     menuToggle.addEventListener('click', function(e) {
         e.stopPropagation(); // 이벤트 버블링 방지
-        menuToggle.classList.toggle('active');
-        menuContainer.classList.toggle('active');
-    });
-    
-    // 문서 클릭 시 메뉴 닫기
-    document.addEventListener('click', function(e) {
-        if (!menuContainer.contains(e.target) && e.target !== menuToggle) {
-            menuToggle.classList.remove('active');
-            menuContainer.classList.remove('active');
-        }
-    });
-    
-    // 메뉴 아이템 클릭 시 메뉴 닫기
-    document.querySelectorAll('.menu li a').forEach(item => {
-        item.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            menuContainer.classList.remove('active');
-        });
+        
+        // Supabase 대시보드 URL - 실제 Supabase 프로젝트 URL로 변경 필요
+        const supabaseUrl = 'https://app.supabase.com/dashboard';
+        
+        // 로딩 오버레이 표시
+        loadingOverlay.style.display = 'flex';
+        
+        // 카운트다운 시작
+        let seconds = 3;
+        redirectCounter.textContent = `${seconds}초 후 Supabase로 이동합니다`;
+        
+        const countdown = setInterval(() => {
+            seconds--;
+            redirectCounter.textContent = `${seconds}초 후 Supabase로 이동합니다`;
+            
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                loadingOverlay.style.display = 'none';
+                window.location.href = supabaseUrl;
+            }
+        }, 1000);
     });
 
     // 스크롤 시 헤더 스타일 변경
@@ -82,13 +84,5 @@ document.addEventListener('DOMContentLoaded', function() {
             // 링크 기능을 유지하면서 클릭 이벤트 로깅
             console.log('대출 정보 클릭됨: ' + this.querySelector('h3').textContent);
         });
-    });
-    
-    // 반응형 처리: 화면 크기 변경 시 메뉴 표시 상태 업데이트
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 840) {
-            menuToggle.classList.remove('active');
-            menuContainer.classList.remove('active');
-        }
     });
 }); 
