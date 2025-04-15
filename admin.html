@@ -9,210 +9,76 @@
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <div class="logo-container">
-                    <a href="index.html" class="logo">DOTO NEWS</a>
-                </div>
-                
-                <button class="menu-toggle" id="menu-toggle">
-                    <span class="hamburger-icon">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="admin-main">
-        <div class="admin-sidebar">
+    <div class="admin-container">
+        <!-- 헤더 -->
+        <header class="admin-header">
+            <button id="menu-toggle" class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1>DOTO NEWS 어드민</h1>
             <div class="admin-profile">
-                <div class="admin-avatar">
-                    <img src="https://via.placeholder.com/80" alt="관리자 프로필">
-                </div>
-                <h3>관리자님</h3>
-                <p>마지막 로그인: 2024.05.30</p>
+                <span>관리자</span>
             </div>
-            <ul class="admin-menu">
-                <li class="active"><a href="#dashboard">대시보드</a></li>
-                <li><a href="#posts">게시물 관리</a></li>
-                <li><a href="#comments">댓글 관리</a></li>
-                <li><a href="#categories">카테고리 관리</a></li>
-                <li><a href="#users">사용자 관리</a></li>
-                <li><a href="#settings">사이트 설정</a></li>
-                <li class="logout"><a href="index.html">로그아웃</a></li>
-            </ul>
-        </div>
-        
-        <div class="admin-content">
-            <div class="admin-header">
-                <h1>블로그 관리 대시보드</h1>
-                <div class="admin-actions">
-                    <button class="admin-btn primary">새 글 작성</button>
-                    <button class="admin-btn">통계 보기</button>
-                </div>
-            </div>
-            
-            <div class="admin-stats">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="stat-data">
-                        <h3>총 게시물</h3>
-                        <p class="stat-value">124</p>
-                        <p class="stat-trend up">+12% 증가</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <div class="stat-data">
-                        <h3>총 방문자</h3>
-                        <p class="stat-value">8,753</p>
-                        <p class="stat-trend up">+27% 증가</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="stat-data">
-                        <h3>총 댓글</h3>
-                        <p class="stat-value">502</p>
-                        <p class="stat-trend up">+8% 증가</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <div class="stat-data">
-                        <h3>평균 체류시간</h3>
-                        <p class="stat-value">4:32</p>
-                        <p class="stat-trend down">-2% 감소</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="admin-table-container">
-                <div class="table-header">
-                    <h2>최근 게시물</h2>
-                    <div class="table-actions">
-                        <input type="text" placeholder="게시물 검색" class="search-input">
-                        <button class="admin-btn sm">검색</button>
-                    </div>
-                </div>
-                
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th class="col-id">ID</th>
-                            <th class="col-title">제목</th>
-                            <th class="col-category">카테고리</th>
-                            <th class="col-date">작성일</th>
-                            <th class="col-views">조회수</th>
-                            <th class="col-status">상태</th>
-                            <th class="col-actions">관리</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="post-title">내일배움카드 신청 및 발급하기</td>
-                            <td>금융</td>
-                            <td>2024-05-28</td>
-                            <td>2,457</td>
-                            <td><span class="badge published">게시됨</span></td>
-                            <td>
-                                <button class="table-btn edit">수정</button>
-                                <button class="table-btn delete">삭제</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="post-title">대학생특별카드 신청 안내</td>
-                            <td>금융</td>
-                            <td>2024-05-25</td>
-                            <td>1,865</td>
-                            <td><span class="badge published">게시됨</span></td>
-                            <td>
-                                <button class="table-btn edit">수정</button>
-                                <button class="table-btn delete">삭제</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="post-title">K-밀크 카드 발급 프로모션</td>
-                            <td>국가정책</td>
-                            <td>2024-05-20</td>
-                            <td>1,203</td>
-                            <td><span class="badge published">게시됨</span></td>
-                            <td>
-                                <button class="table-btn edit">수정</button>
-                                <button class="table-btn delete">삭제</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td class="post-title">2025 문화누리카드 서비스 안내</td>
-                            <td>재테크</td>
-                            <td>2024-05-18</td>
-                            <td>978</td>
-                            <td><span class="badge published">게시됨</span></td>
-                            <td>
-                                <button class="table-btn edit">수정</button>
-                                <button class="table-btn delete">삭제</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td class="post-title">신용카드 올바르게 사용하기</td>
-                            <td>금융</td>
-                            <td>2024-05-15</td>
-                            <td>2,102</td>
-                            <td><span class="badge draft">임시저장</span></td>
-                            <td>
-                                <button class="table-btn edit">수정</button>
-                                <button class="table-btn delete">삭제</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="pagination">
-                    <button class="pagination-btn">&laquo;</button>
-                    <button class="pagination-btn active">1</button>
-                    <button class="pagination-btn">2</button>
-                    <button class="pagination-btn">3</button>
-                    <button class="pagination-btn">4</button>
-                    <button class="pagination-btn">5</button>
-                    <button class="pagination-btn">&raquo;</button>
-                </div>
-            </div>
-        </div>
-    </main>
+        </header>
 
-    <script src="script.js"></script>
+        <!-- 사이드바 -->
+        <aside class="admin-sidebar">
+            <nav class="admin-menu">
+                <ul>
+                    <li class="active" data-section="dashboard">
+                        <a href="#dashboard">대시보드</a>
+                    </li>
+                    <li data-section="posts">
+                        <a href="#posts">게시글 관리</a>
+                    </li>
+                    <li data-section="users">
+                        <a href="#users">사용자 관리</a>
+                    </li>
+                    <li data-section="settings">
+                        <a href="#settings">설정</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="admin-content">
+            <div class="content-header">
+                <div class="admin-actions">
+                    <button class="admin-btn primary new-post-btn">새 글 작성</button>
+                    <button class="admin-btn stats-btn">통계 보기</button>
+                </div>
+                <div class="table-actions">
+                    <input type="text" class="search-input" placeholder="제목 또는 카테고리로 검색...">
+                </div>
+            </div>
+
+            <table id="postsTable" class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>제목</th>
+                        <th>카테고리</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                        <th>상태</th>
+                        <th>액션</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 게시글 목록이 여기에 동적으로 추가됩니다 -->
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <button class="pagination-btn">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+            </div>
+        </main>
+    </div>
     <script src="admin.js"></script>
 </body>
 </html> 

@@ -3,9 +3,26 @@ const supabaseUrl = 'https://yyazjydfftyzruirhdzl.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5YXpqeWRmZnR5enJ1aXJoZHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MDk1NzYsImV4cCI6MjA2MDE4NTU3Nn0.5QwMPdA3Xnh8Nzhv8_I-PBzfOq4ZIhWAtMtQSz_lQX4';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+// 로딩 오버레이 생성
+function showLoading() {
+    const overlay = document.createElement('div');
+    overlay.className = 'loading-overlay';
+    overlay.innerHTML = '<div class="loading-spinner"></div>';
+    document.body.appendChild(overlay);
+}
+
+function hideLoading() {
+    const overlay = document.querySelector('.loading-overlay');
+    if (overlay) {
+        overlay.remove();
+    }
+}
+
 // 게시글 목록 조회 함수
 async function fetchPosts() {
     try {
+        showLoading();
+        await new Promise(resolve => setTimeout(resolve, 500)); // 0.5초로 단축
         const { data, error } = await supabase
             .from('posts')
             .select('*')
@@ -16,6 +33,8 @@ async function fetchPosts() {
     } catch (error) {
         console.error('게시글 조회 중 오류:', error);
         return [];
+    } finally {
+        hideLoading();
     }
 }
 
@@ -186,23 +205,43 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 햄버거 버튼 클릭 시 Supabase 대시보드로 이동
+    // 햄버거 버튼 클릭 이벤트
     const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.admin-sidebar');
+    const content = document.querySelector('.admin-content');
     
-    menuToggle.addEventListener('click', function() {
-        window.open('https://app.supabase.com/dashboard', '_blank');
-    });
-    
+    if (menuToggle && sidebar && content) {
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('sidebar-active');
+        });
+    }
+
     // 메뉴 활성화
     const menuItems = document.querySelectorAll('.admin-menu li');
-    
     menuItems.forEach(item => {
-        item.addEventListener('click', function() {
-            document.querySelector('.admin-menu li.active').classList.remove('active');
+        item.addEventListener('click', async function() {
+            menuItems.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
+
+            const section = this.dataset.section;
+            switch(section) {
+                case 'dashboard':
+                    window.open('https://app.supabase.com/dashboard', '_blank');
+                    break;
+                case 'posts':
+                    await displayPosts();
+                    break;
+                case 'users':
+                    window.open('https://app.supabase.com/auth/users', '_blank');
+                    break;
+                case 'settings':
+                    window.open('https://app.supabase.com/project/settings', '_blank');
+                    break;
+            }
         });
     });
-    
+
     // 통계 보기 버튼
     const statsBtn = document.querySelector('.admin-actions .admin-btn:not(.primary)');
     
@@ -245,4 +284,39 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
         });
     });
-}); 
+
+    // 초기 게시글 목록 표시
+    displayPosts();
+});
+
+// CSS 스타일 추가
+const style = document.createElement('style');
+style.textContent = `
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style); 
