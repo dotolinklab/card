@@ -71,7 +71,7 @@
     font-display: swap;
 }
 
-/* 기본 폰트 설정 */
+/* 기본 스타일 */
 * {
     margin: 0;
     padding: 0;
@@ -85,13 +85,11 @@ body {
     color: #333;
 }
 
-/* 제목 폰트 설정 */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Paperlogy', sans-serif;
     font-weight: 700;
 }
 
-/* 버튼과 링크 폰트 설정 */
 button, a,
 input,
 textarea,
@@ -99,6 +97,7 @@ select {
     font-family: 'Paperlogy', sans-serif;
 }
 
+/* 헤더 스타일 */
 header {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -110,50 +109,26 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between; /* 내부 요소들 간격 벌리기 */
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem 0; /* 좌우 패딩 제거 */
-    max-width: 1100px; /* 컨텐츠 전체 너비 */
+    padding: 1rem 0;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
-    width: 1100px; /* 전체 컨테이너 너비 */
-    position: relative; /* 추가 */
-    padding: 0; /* 패딩 제거 */
+    width: 1100px;
+    position: relative;
+    padding: 0;
     box-sizing: border-box;
     margin: 0 auto;
 }
 
 .logo-container {
-    width: 800px; /* 메인 배너와 동일한 너비 */
-    padding-left: 15px; /* 로고 왼쪽 여백 */
-}
-
-.menu-container {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    z-index: 999;
-    padding: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    border-radius: 0 0 8px 8px;
-    overflow: hidden;
-}
-
-.menu-container.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    width: 800px;
+    padding-left: 15px;
 }
 
 .logo {
@@ -162,75 +137,51 @@ nav {
     color: #2c3e50;
     text-decoration: none;
     transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .logo:hover {
     color: #3498db;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.menu li {
-    margin: 0;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-}
-
-.menu li:last-child {
-    border-bottom: none;
-}
-
-.menu li a {
-    display: block;
-    padding: 15px 20px;
-    color: #333;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    width: 100%;
-    text-align: center;
-}
-
-.menu li a:hover {
-    background-color: #f5f5f5;
+.money-icon {
     color: #000077;
+    transition: transform 0.3s ease;
 }
 
-/* 메인 레이아웃 컨테이너 */
+.logo:hover .money-icon {
+    transform: rotate(15deg);
+}
+
+/* 메인 레이아웃 */
 main {
     max-width: 1100px;
     margin: 0 auto;
-    padding-top: 80px; /* 헤더 높이만큼 패딩 추가 */
+    padding-top: 80px;
 }
 
-/* 콘텐츠 래퍼 - 카드 섹션과 대출 정보 포함 */
 .content-wrapper {
     display: flex;
     width: 100%;
     position: relative;
-    gap: 0; /* 간격 제거 */
-    justify-content: space-between; /* 양쪽 끝으로 정렬 */
+    gap: 0;
+    justify-content: space-between;
 }
 
-/* 메인 컨텐츠 너비 */
 .main-width {
-    width: 800px; /* 메인 콘텐츠 너비 */
+    width: 800px;
 }
 
-/* 왼쪽 콘텐츠 영역 (배너 + 카드) */
 .left-content {
-    padding-right: 0; /* 우측 패딩 제거 */
+    padding-right: 0;
 }
 
+/* 히어로 섹션 */
 .hero {
     width: 100%;
-    height: 320px;  /* 400px에서 20% 감소된 320px */
+    height: 320px;
     background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbk0WjE%2FbtsNdzaSf3B%2FGIYBEfS2Zz50oskukXY500%2Fimg.jpg');
     background-size: cover;
     background-position: center;
@@ -242,206 +193,164 @@ main {
     border: 2px solid #000077;
 }
 
-.news-section {
-    width: 100%; /* 메인 배너와 동일한 너비 */
-    padding: 0;
-}
-
-.card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-}
-
+/* 카드 스타일 */
 .horizontal-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000077;
-    padding: 1.3rem 1.5rem;
-    border-radius: 12px;
+    padding: 35px;
+    margin-bottom: 20px;
+    background: #000077;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     text-decoration: none;
+    color: #fff;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.horizontal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 119, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .horizontal-card:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.horizontal-card:hover::before {
+    opacity: 1;
 }
 
 .card-content {
+    position: relative;
+    z-index: 1;
     flex: 1;
 }
 
 .card-content h3 {
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-    font-size: 1.7rem;
-    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     line-height: 1.3;
 }
 
 .card-content p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1rem;
-    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
 .card-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
-    margin-left: 1rem;
-    background-color: #5e43ff;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
+    margin-left: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
 }
 
 .card-arrow svg {
     width: 30px;
     height: 30px;
+    stroke: #fff;
+    transition: transform 0.3s ease;
 }
 
-/* 오른쪽 대출 정보 영역 - 고정 위치 */
+.horizontal-card:hover .card-arrow {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+}
+
+.horizontal-card:hover .card-arrow svg {
+    transform: translateX(5px);
+}
+
+/* 대출 정보 스타일 */
 .loan-info {
-    width: 300px; /* 고정 너비 조정 */
-    padding: 0 0 0 20px; /* 왼쪽 패딩 추가 */
-    position: sticky;
-    top: 100px; /* 헤더 아래에 고정 */
-    align-self: flex-start; /* 상단에 맞춤 */
-    max-height: calc(100vh - 120px); /* 뷰포트 높이에서 여백 제외 */
-    overflow-y: auto; /* 내용이 길어지면 스크롤 */
+    width: 280px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .loan-info h2 {
-    color: #2c3e50;
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 2px solid #eee;
     display: flex;
     align-items: center;
-    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #000077;
+    gap: 8px;
 }
 
 .loan-info h2 .icon {
-    margin-right: 8px;
-    color: #3498db;
+    color: #000077;
+    transition: transform 0.3s ease;
+}
+
+.loan-info h2:hover .icon {
+    transform: translateY(-2px);
 }
 
 .loan-links {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 15px;
 }
 
 .loan-link-item {
-    background: #f8f9fa;
-    padding: 1rem;
+    padding: 15px;
+    background-color: #f8f9fa;
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    position: relative;
-    overflow: hidden;
-    border-left: 4px solid #3498db;
+    color: inherit;
+    transition: background-color 0.2s;
 }
 
 .loan-link-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    background-color: #f1f5f9;
+    background-color: #e9ecef;
 }
 
-.loan-link-item h3 {
-    color: #2c3e50;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-    font-weight: 600;
-}
-
-.loan-link-item p {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
+/* 푸터 스타일 */
 footer {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 3rem 0;
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+    margin-top: 60px;
     text-align: center;
-    margin-top: 3rem;
 }
 
 .disclaimer {
     max-width: 800px;
-    margin: 0 auto 2rem;
-    padding: 0 15px;
+    margin: 0 auto 20px;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .copyright {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 0.8rem;
+    color: #999;
 }
 
-/* 모바일 메뉴 토글 버튼 */
-.menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1000;
-    position: absolute; /* 절대 위치로 변경 */
-    top: 50%; /* 상단에서 50% 위치 */
-    right: calc(100% - 800px + 15px); /* 메인 배너 우측 끝에서 15px 위치 */
-    transform: translateY(-50%); /* 중앙 정렬을 위한 위치 조정 */
-}
-
-.hamburger-icon {
-    width: 24px;
-    height: 18px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.hamburger-line {
-    width: 100%;
-    height: 2px;
-    background-color: #000077;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-/* 햄버거 메뉴 열림 상태 스타일 */
-.menu-toggle.active .hamburger-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active .hamburger-line:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* 메뉴 오버레이 */
-.menu-overlay {
-    display: none;
-}
-
-/* 로딩 오버레이 스타일 */
+/* 로딩 오버레이 */
 .loading-overlay {
     display: none;
     position: fixed;
@@ -449,18 +358,18 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 9999;
 }
 
 .loading-spinner {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db;
+    border-top: 5px solid #000077;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 20px;
@@ -468,7 +377,7 @@ footer {
 
 .loading-text {
     font-size: 1.2rem;
-    color: #333;
+    color: #000077;
     margin-bottom: 10px;
 }
 
@@ -482,275 +391,125 @@ footer {
     100% { transform: rotate(360deg); }
 }
 
+/* 반응형 스타일 */
 @media (max-width: 1140px) {
     nav, main {
-        width: 95%;
+        padding: 0 20px;
     }
-    
+
     .nav-container {
         width: 100%;
-        padding: 0;
     }
-    
+
     .logo-container {
-        padding-left: 15px;
+        width: auto;
     }
-    
-    .menu-toggle {
-        right: 15px; /* 작은 화면에서는 컨테이너 우측 끝으로 */
-    }
-    
+
     .main-width {
-        width: 100% !important;
+        width: 100%;
     }
-    
+
     .content-wrapper {
         flex-direction: column;
     }
-    
+
     .left-content {
-        width: 100%;
+        margin-bottom: 20px;
     }
-    
-    .hero {
-        width: 100%;
-        height: 0;
-        padding-bottom: 40%; /* 50%에서 20% 감소된 40% */
-    }
-    
+
     .loan-info {
         width: 100%;
-        position: static;
-        padding: 20px 0 0 0;
-        max-height: none;
-        overflow-y: visible;
-    }
-    
-    .nav-container .menu {
-        flex-basis: auto;
     }
 }
 
-@media (max-width: 840px) {
-    .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
+@media (max-width: 768px) {
+    .card-content h3 {
+        font-size: 1.5rem;
     }
-    
-    .menu-container {
-        top: 60px;
-        right: 0;
-        width: 100%;
-        max-width: 100%;
+
+    .card-content p {
+        font-size: 1rem;
     }
-    
-    .menu {
-        flex-direction: column;
-        width: 100%;
+
+    .card-arrow {
+        width: 45px;
+        height: 45px;
+        margin-left: 20px;
     }
-    
-    .menu li {
-        margin: 0;
-        text-align: center;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .menu li a {
-        padding: 15px 20px;
-        display: block;
-        width: 100%;
+
+    .card-arrow svg {
+        width: 24px;
+        height: 24px;
     }
 }
 
 @media (max-width: 480px) {
     .horizontal-card {
-        padding: 1rem;
+        padding: 20px;
     }
-    
+
     .card-content h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
-    
+
     .card-content p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
-    
-    .card-arrow {
-        width: 35px;
-        height: 35px;
-    }
-    
-    .card-arrow svg {
-        width: 20px;
-        height: 20px;
-    }
-    
+
     .loan-link-item h3 {
         font-size: 1rem;
     }
-    
+
     .loan-link-item p {
         font-size: 0.8rem;
     }
 }
 
-/* 테이블 스타일 개선 */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
-    border: 1px solid #eee;
-    table-layout: fixed; /* 고정 너비 테이블 레이아웃 */
-}
-
-th, td {
-    padding: 0.8rem 1rem;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-th {
-    background-color: #f5f7f9;
-    font-weight: 600;
-    color: #333;
-}
-
-/* 테이블 내 컬럼 너비 설정 */
-table .col-date, 
-table th:nth-child(1), 
-table td:nth-child(1) {
-    width: 15%;
-}
-
-table .col-views, 
-table th:nth-child(2), 
-table td:nth-child(2) {
-    width: 10%;
-}
-
-table .col-actions, 
-table th:nth-child(3), 
-table td:nth-child(3) {
-    width: 10%;
-}
-
-table .col-title, 
-table th:nth-child(4), 
-table td:nth-child(4) {
-    width: 65%;
-    text-align: left;
-}
-
-/* 각 열별 정렬 설정 */
-th:first-child, td:first-child {
-    text-align: center;
-}
-
-th:nth-child(2), td:nth-child(2) {
-    text-align: center;
-}
-
-th:nth-child(3), td:nth-child(3) {
-    text-align: center;
-}
-
-/* 테이블 행 호버 효과 */
-tr:hover {
-    background-color: #f9f9f9;
-}
-
-/* 테이블 내 버튼 스타일 */
-.table-btn {
-    background: none;
-    border: none;
-    color: #3498db;
-    cursor: pointer;
-    padding: 0.3rem 0.5rem;
-    margin: 0 0.2rem;
-}
-
-.table-btn:hover {
-    color: #2980b9;
-}
-
-/* 테이블 내 아이콘 정렬 */
-td img, td svg, td .icon {
-    vertical-align: middle;
-    display: inline-block;
-}
-
-/* 체크박스 정렬 */
-td input[type="checkbox"] {
-    margin: 0 auto;
-    display: block;
-}
-
-/* 테이블 제목 영역 */
-.table-title {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-/* 페이지네이션 영역 */
-.pagination {
+/* 네비게이션 우측 영역 스타일 */
+.nav-right {
     display: flex;
+    align-items: center;
+}
+
+.login-icon {
+    color: #2c3e50;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 1.5rem;
-    gap: 0.5rem;
 }
 
-.pagination-btn {
-    padding: 0.5rem 0.8rem;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    color: #333;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
+.login-icon:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
 }
 
-.pagination-btn:hover, 
-.pagination-btn.active {
-    background-color: #3498db;
-    color: #fff;
-    border-color: #3498db;
+.login-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
-/* 애드센스 광고 영역 스타일 */
-.ad-container {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 0;
-    border-radius: 12px;
-    overflow: hidden;
+/* 하단 광고 스타일 */
+.bottom-ad {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.adsense-banner {
-    width: 100%;
-    overflow: hidden;
-}
-
-/* 애드센스 광고 반응형 설정 */
+/* 반응형 스타일 수정 */
 @media (max-width: 1140px) {
-    .ad-container {
-        padding: 0 15px;
+    .nav-container {
+        padding: 0 20px;
     }
 }
 
-/* 모바일 및 데스크톱 반응형 설정 */
-@media (min-width: 841px) {
-    .menu-container {
-        left: auto; /* 오른쪽 정렬 유지 */
-        right: calc(100% - 800px); /* 메인 배너 우측 끝에 맞춤 */
-        max-width: 250px;
+@media (max-width: 480px) {
+    .login-icon svg {
+        width: 20px;
+        height: 20px;
     }
 }

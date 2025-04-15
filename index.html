@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신용카드 올바르게 사용하기</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-container">
                 <div class="logo-container">
-                    <a href="index.html" class="logo">DOTO NEWS</a>
+                    <a href="index.html" class="logo">
+                        <svg class="money-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                            <path d="M12 18V6"></path>
+                        </svg>
+                        DOTO NEWS
+                    </a>
                 </div>
-                
-                <button class="menu-toggle" id="menu-toggle">
-                    <span class="hamburger-icon">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </span>
-                </button>
-                
-                <div class="menu-container" id="menu-container">
-                    <ul class="menu">
-                        <li><a href="https://www.gov.kr/portal/main" target="_blank">국가정책</a></li>
-                        <li><a href="https://www.fss.or.kr/fss/kr/main.jsp" target="_blank">재테크</a></li>
-                        <li><a href="https://www.fsc.go.kr/ko/main.do" target="_blank">금융</a></li>
-                    </ul>
+                <div class="nav-right">
+                    <a href="login.html" class="login-icon" title="관리자 로그인">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -59,54 +59,8 @@
                 </section>
 
                 <section class="news-section">
-                    <div class="card-container">
-                        <a href="https://all.dokbun2.com/50" class="horizontal-card">
-                            <div class="card-content">
-                                <h3>내일배움카드 신청, 발급하기</h3>
-                                <p>내일배움카드 완벽 가이드: 신청부터 활용까지</p>
-                            </div>
-                            <div class="card-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 18l6-6-6-6"></path>
-                                </svg>
-                            </div>
-                        </a>
-                        
-                        <a href="https://all.dokbun2.com/49" class="horizontal-card">
-                            <div class="card-content">
-                                <h3>K패스,기후동행카드 신청, 발급하기</h3>
-                                <p>K패스 vs 기후동행카드, 나에게 유리한 건 무엇일까?</p>
-                            </div>
-                            <div class="card-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 18l6-6-6-6"></path>
-                                </svg>
-                            </div>
-                        </a>
-                        
-                        <a href="https://all.dokbun2.com/45" class="horizontal-card">
-                            <div class="card-content">
-                                <h3>경기패쓰 신청, 교통비 환급받기</h3>
-                                <p>경기패쓰 신청방법 및 교통비 환급받기! 모르는게 죄다?!</p>
-                            </div>
-                            <div class="card-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 18l6-6-6-6"></path>
-                                </svg>
-                            </div>
-                        </a>
-                        
-                        <a href="https://all.dokbun2.com/32" class="horizontal-card">
-                            <div class="card-content">
-                                <h3>기초연금신청, 발급하기</h3>
-                                <p>기초연금 모바일신청, 손쉽게 끝내는 꿀팁 대공개!</p>
-                            </div>
-                            <div class="card-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 18l6-6-6-6"></path>
-                                </svg>
-                            </div>
-                        </a>
+                    <div id="card-container" class="card-container">
+                        <!-- 카드들이 여기에 동적으로 로드됩니다 -->
                     </div>
                 </section>
             </div>
@@ -114,29 +68,44 @@
             <aside class="loan-info">
                 <h2>
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="6" width="20" height="12" rx="2"></rect>
-                        <circle cx="12" cy="12" r="2"></circle>
-                        <path d="M6 12h.01M18 12h.01"></path>
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <path d="M3.29 7L12 12l8.71-5"></path>
+                        <path d="M12 22V12"></path>
                     </svg>
-                    대출 정보 바로가기
+                    유용한 사이트
                 </h2>
                 <div class="loan-links">
-                    <a href="https://www.gov.kr/portal/loan" target="_blank" class="loan-link-item">
-                        <h3>국가 서민대출</h3>
-                        <p>저금리 서민 금융 지원, 자격과 한도 확인</p>
+                    <a href="https://www.gov.kr/" class="loan-link-item">
+                        <h3>정부 24</h3>
+                        <p>각종 정책 및 민원정보 확인</p>
                     </a>
-                    <a href="https://www.sbiz.or.kr/" target="_blank" class="loan-link-item">
-                        <h3>소상공인 정책자금 대출</h3>
-                        <p>사업 운영 자금, 상공인을 위한 정책 대출</p>
+                    <a href="https://www.bokjiro.go.kr/" class="loan-link-item">
+                        <h3>복지로</h3>
+                        <p>각종 지원금 및 복지급여 신청</p>
                     </a>
-                    <a href="https://www.hf.go.kr/" target="_blank" class="loan-link-item">
-                        <h3>청년 전월세 대출</h3>
-                        <p>청년을 위한 주거 안정 지원 대출</p>
+                    <a href="https://korea-pass.kr/" class="loan-link-item">
+                        <h3>K-패쓰</h3>
+                        <p>19세 이상 교통비 할인혜택</p>
                     </a>
-                    <a href="https://www.hf.go.kr/" target="_blank" class="loan-link-item">
-                        <h3>신혼부부 주택자금 대출</h3>
-                        <p>신혼가구 주택 구입 및 임차 자금 지원</p>
+                    <a href="https://pay.tmoney.co.kr/ncs/pct/cardrgt/ReadClmtAcmpCardYthDscd.dev" class="loan-link-item">
+                        <h3>기후동행카드할인</h3>
+                        <p>만19세~39세 교통비 할인혜택</p>
                     </a>
+                </div>
+                <!-- 하단 애드센스 광고 -->
+                <div class="adsense-banner bottom-ad">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3297361889610977"
+                         crossorigin="anonymous"></script>
+                    <!-- 사이드바 하단광고 -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-3297361889610977"
+                         data-ad-slot="1051740099"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
             </aside>
         </div>
@@ -154,14 +123,7 @@
             <p>© 2025 DOTO NEWS • Built with dotolinklab </p>
         </div>
     </footer>
-
-    <!-- 로딩 오버레이 -->
-    <div class="loading-overlay" id="loading-overlay">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">사이트로 이동 중...</div>
-        <div class="redirect-counter" id="redirect-counter"></div>
-    </div>
-
     <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
