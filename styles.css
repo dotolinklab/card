@@ -105,15 +105,19 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0;
     max-width: 1100px;
     margin: 0 auto;
+    height: 100%;
 }
 
 .nav-container {
@@ -132,14 +136,14 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #2c3e50;
     text-decoration: none;
     transition: color 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .logo:hover {
@@ -149,6 +153,8 @@ nav {
 .money-icon {
     color: #000077;
     transition: transform 0.3s ease;
+    width: 28px;
+    height: 28px;
 }
 
 .logo:hover .money-icon {
@@ -159,7 +165,31 @@ nav {
 main {
     max-width: 1100px;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: 100px;
+}
+
+/* 광고 섹션 스타일 */
+.ad-container {
+    margin: 30px 0 50px;
+    width: 100%;
+}
+
+.adsense-banner {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 뉴스 섹션 스타일 */
+.news-section {
+    margin-top: 30px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .content-wrapper {
@@ -393,16 +423,29 @@ footer {
 
 /* 반응형 스타일 */
 @media (max-width: 1140px) {
-    nav, main {
+    header {
+        height: 70px;
+    }
+
+    nav {
         padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .money-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    main {
+        padding: 90px 20px 0 20px;
     }
 
     .nav-container {
         width: 100%;
-    }
-
-    .logo-container {
-        width: auto;
     }
 
     .main-width {
@@ -423,6 +466,23 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header {
+        height: 65px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .money-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    main {
+        padding-top: 85px;
+    }
+
     .card-content h3 {
         font-size: 1.5rem;
     }
@@ -441,9 +501,30 @@ footer {
         width: 24px;
         height: 24px;
     }
+
+    .ad-container {
+        margin: 25px 0 40px;
+    }
+
+    .card-container {
+        gap: 20px;
+    }
 }
 
 @media (max-width: 480px) {
+    header {
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .money-icon {
+        width: 20px;
+        height: 20px;
+    }
+
     .horizontal-card {
         padding: 20px;
     }
@@ -462,6 +543,18 @@ footer {
 
     .loan-link-item p {
         font-size: 0.8rem;
+    }
+
+    main {
+        padding-top: 80px;
+    }
+
+    .ad-container {
+        margin: 20px 0 30px;
+    }
+
+    .card-container {
+        gap: 15px;
     }
 }
 
