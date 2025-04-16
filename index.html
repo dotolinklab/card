@@ -135,5 +135,49 @@
     </footer>
     <script src="script.js"></script>
     <script src="index.js"></script>
+    <script>
+        // Supabase 클라이언트 초기화
+        const supabaseUrl = 'https://yyazjydfftyzruirhdzl.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5YXpqeWRmZnR5enJ1aXJoZHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MDk1NzYsImV4cCI6MjA2MDE4NTU3Nn0.5QwMPdA3Xnh8Nzhv8_I-PBzfOq4ZIhWAtMtQSz_lQX4';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // 방문자 기록
+        async function recordVisit() {
+            try {
+                const today = new Date().toISOString().split('T')[0];
+                const { data: existingVisit, error: checkError } = await supabase
+                    .from('visits')
+                    .select('*')
+                    .eq('date', today)
+                    .single();
+
+                if (checkError && checkError.code !== 'PGRST116') {
+                    throw checkError;
+                }
+
+                if (existingVisit) {
+                    // 오늘 방문 기록이 있으면 카운트 증가
+                    const { error: updateError } = await supabase
+                        .from('visits')
+                        .update({ count: existingVisit.count + 1 })
+                        .eq('date', today);
+
+                    if (updateError) throw updateError;
+                } else {
+                    // 오늘 첫 방문이면 새 기록 생성
+                    const { error: insertError } = await supabase
+                        .from('visits')
+                        .insert([{ date: today, count: 1 }]);
+
+                    if (insertError) throw insertError;
+                }
+            } catch (error) {
+                console.error('Error recording visit:', error);
+            }
+        }
+
+        // 페이지 로드 시 방문자 기록
+        recordVisit();
+    </script>
 </body>
 </html>
