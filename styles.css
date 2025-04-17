@@ -140,7 +140,7 @@ nav {
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: #0b0b7c;
     text-decoration: none;
     transition: color 0.3s;
     display: flex;
@@ -149,7 +149,20 @@ nav {
 }
 
 .logo:hover {
-    color: #3498db;
+    color: #1e1ea3;
+}
+
+.logo-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+    margin-right: 5px;
+    filter: invert(10%) sepia(74%) saturate(4184%) hue-rotate(241deg) brightness(94%) contrast(110%);
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.1);
 }
 
 .money-icon {
@@ -172,7 +185,7 @@ main {
 
 /* 광고 섹션 스타일 */
 .ad-container {
-    margin: 30px 0 50px;
+    margin: 30px 0 20px;
     width: 100%;
 }
 
@@ -528,7 +541,7 @@ footer {
     }
 
     .ad-container {
-        margin: 25px 0 40px;
+        margin: 20px 0 25px;
     }
 
     .card-container {
@@ -625,7 +638,7 @@ footer {
     }
 
     .ad-container {
-        margin: 20px 0 30px;
+        margin: 15px 0 15px;
     }
 
     .card-container {
