@@ -1,6 +1,6 @@
 // Supabase 클라이언트 초기화
-const supabaseUrl = 'https://yyazjydfftyzruirhdzl.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5YXpqeWRmZnR5enJ1aXJoZHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MDk1NzYsImV4cCI6MjA2MDE4NTU3Nn0.5QwMPdA3Xnh8Nzhv8_I-PBzfOq4ZIhWAtMtQSz_lQX4'
+const supabaseUrl = 'https://puwtawstfkvrmynlisxn.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1d3Rhd3N0Zmt2cm15bmxpc3huIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwMDAwMDAsImV4cCI6MTc1OTU3NjAwMH0.XXXXXXXX'
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
 
 // 요소 선택
@@ -112,8 +112,8 @@ function displayPosts() {
     if (currentPosts.length === 0) {
         cardContainer.innerHTML = `
             <div class="no-posts">
-                <h2>등록된 게시글이 없습니다</h2>
-                <p>곧 새로운 소식으로 찾아뵙겠습니다!</p>
+                <h2>등록된 트로트 정보가 없습니다</h2>
+                <p>곧 새로운 노래 정보를 업데이트하겠습니다!</p>
             </div>
         `
         paginationContainer.style.display = 'none'
@@ -146,7 +146,7 @@ async function loadPosts() {
         console.error('Error loading posts:', error)
         cardContainer.innerHTML = `
             <div class="no-posts">
-                <h2>게시글을 불러오는 중 오류가 발생했습니다</h2>
+                <h2>트로트 정보를 불러오는 중 오류가 발생했습니다</h2>
                 <p>잠시 후 다시 시도해주세요.</p>
             </div>
         `
