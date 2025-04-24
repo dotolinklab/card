@@ -130,28 +130,59 @@ function displayPosts() {
 // 포스트 로드 함수
 async function loadPosts() {
     try {
+        console.log('게시글 로드 시작...')
+        
         const { data, error } = await supabase
             .from('posts')
             .select('*')
             .order('created_at', { ascending: false })
 
-        if (error) throw error
+        if (error) {
+            console.error('Supabase 쿼리 에러:', error)
+            throw error
+        }
 
+        console.log('받은 데이터:', data)
+        
         allPosts = data
         totalPages = Math.ceil(allPosts.length / itemsPerPage)
+        
+        console.log(`총 ${allPosts.length}개 게시글, ${totalPages}개 페이지`)
         
         displayPosts()
         createPagination()
     } catch (error) {
-        console.error('Error loading posts:', error)
+        console.error('게시글 로드 중 오류 발생:', error)
+        
+        // 자세한 오류 정보 표시
+        const errorDetails = error.message || JSON.stringify(error)
+        console.error('오류 상세:', errorDetails)
+        
         cardContainer.innerHTML = `
             <div class="no-posts">
                 <h2>게시글을 불러오는 중 오류가 발생했습니다</h2>
                 <p>잠시 후 다시 시도해주세요.</p>
+                <p class="error-details">오류: ${errorDetails}</p>
             </div>
         `
     }
 }
 
 // 페이지 로드 시 포스트 로드
-document.addEventListener('DOMContentLoaded', loadPosts) 
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('페이지 로드됨, 게시글 로드 함수 호출 예정')
+    
+    // Supabase 클라이언트가 준비되었는지 확인
+    if (window.supabase) {
+        console.log('Supabase 클라이언트 준비됨')
+        loadPosts()
+    } else {
+        console.error('Supabase 클라이언트를 찾을 수 없습니다')
+        cardContainer.innerHTML = `
+            <div class="no-posts">
+                <h2>서비스를 불러올 수 없습니다</h2>
+                <p>Supabase 클라이언트를 찾을 수 없습니다. 페이지를 새로고침해 주세요.</p>
+            </div>
+        `
+    }
+}) 
