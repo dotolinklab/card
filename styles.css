@@ -140,7 +140,7 @@ nav {
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #B22222;
+    color: #0b0b7c;
     text-decoration: none;
     transition: color 0.3s;
     display: flex;
@@ -149,7 +149,7 @@ nav {
 }
 
 .logo:hover {
-    color: #8B0000;
+    color: #1e1ea3;
 }
 
 .logo-image {
@@ -158,7 +158,7 @@ nav {
     border-radius: 0;
     transition: transform 0.3s ease;
     margin-right: 5px;
-    filter: invert(14%) sepia(85%) saturate(3675%) hue-rotate(350deg) brightness(95%) contrast(95%);
+    filter: invert(10%) sepia(74%) saturate(4184%) hue-rotate(241deg) brightness(94%) contrast(110%);
 }
 
 .logo:hover .logo-image {
@@ -198,55 +198,58 @@ main {
 
 /* 뉴스 섹션 스타일 */
 .news-section {
-    margin-top: 20px;
-    position: relative;
+    margin-top: 30px;
 }
 
 .card-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
 }
 
 .content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 30px;
+    display: flex;
+    width: 100%;
+    position: relative;
+    gap: 0;
+    justify-content: space-between;
 }
 
 .main-width {
-    width: 100%;
+    width: 800px;
 }
 
 .left-content {
-    flex: 1;
+    padding-right: 0;
 }
 
 /* 히어로 섹션 */
 .hero {
     width: 100%;
     height: 320px;
-    background-image: url('trot-banner-desktop.jpg');
+    background-image: url('donsangp.jpg');
     background-size: cover;
     background-position: center;
-    border-radius: 16px;
-    border: 2px solid rgba(178, 34, 34, 0.1);
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 119, 0.3);
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    border: 2px solid #000077;
 }
 
 /* 카드 스타일 */
 .horizontal-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 30px;
+    margin-bottom: 15px;
+    background: #000077;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     text-decoration: none;
-    color: #333;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -257,136 +260,139 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 100%;
     height: 100%;
-    background: #B22222;
-    opacity: 0.7;
-    transition: width 0.3s ease;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 119, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .horizontal-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
 .horizontal-card:hover::before {
-    width: 8px;
+    opacity: 1;
 }
 
 .card-content {
+    position: relative;
+    z-index: 1;
     flex: 1;
-    padding-right: 16px;
 }
 
 .card-content h3 {
-    margin: 0 0 8px;
-    font-size: 1.2rem;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
     font-weight: 700;
+    letter-spacing: 0.5px;
     line-height: 1.3;
-    color: #111;
-    transition: color 0.3s ease;
 }
 
 .card-content p {
-    margin: 0;
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
 .card-arrow {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(178, 34, 34, 0.1);
-    color: #B22222;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin-left: 30px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
 }
 
 .card-arrow svg {
-    width: 18px;
-    height: 18px;
+    width: 30px;
+    height: 30px;
+    stroke: #fff;
     transition: transform 0.3s ease;
 }
 
 .horizontal-card:hover .card-arrow {
-    background: #B22222;
-    color: white;
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
 }
 
 .horizontal-card:hover .card-arrow svg {
-    transform: translateX(3px);
+    transform: translateX(5px);
 }
 
 /* 대출 정보 스타일 */
 .loan-info {
-    background: #fff;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .loan-info h2 {
-    color: #B22222;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #000077;
     gap: 8px;
 }
 
 .loan-info h2 .icon {
-    color: #B22222;
+    color: #000077;
     transition: transform 0.3s ease;
 }
 
 .loan-info h2:hover .icon {
-    transform: rotate(15deg);
+    transform: translateY(-2px);
 }
 
 .loan-links {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
 }
 
 .loan-link-item {
     padding: 15px;
-    background: #FFF5F5;
-    border-radius: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s;
 }
 
 .loan-link-item:hover {
-    background: #FFEBEB;
-    transform: translateY(-2px);
+    background-color: #e9ecef;
 }
 
 /* 푸터 스타일 */
 footer {
-    background: #f8f9fa;
+    background-color: #f8f9fa;
     padding: 40px 20px;
-    text-align: center;
     margin-top: 60px;
-    border-top: 1px solid #eee;
+    text-align: center;
 }
 
 .disclaimer {
     max-width: 800px;
     margin: 0 auto 20px;
-    color: #6c757d;
     font-size: 0.9rem;
+    color: #666;
 }
 
 .copyright {
-    color: #adb5bd;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    color: #999;
 }
 
 /* 로딩 오버레이 */
@@ -490,7 +496,7 @@ footer {
 
 @media (max-width: 768px) {
     header {
-        height: 70px;
+        height: 65px;
     }
 
     .nav-container {
@@ -498,7 +504,7 @@ footer {
     }
 
     .logo {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .money-icon {
@@ -516,29 +522,30 @@ footer {
     }
 
     main {
-        padding-top: 90px; /* 768px 헤더 높이(70px) + 여백(20px) */
+        padding-top: 85px; /* 768px 헤더 높이(65px) + 여백(20px) */
     }
 
     .card-content h3 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
 
     .card-content p {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
     .card-arrow {
-        width: 32px;
-        height: 32px;
+        width: 45px;
+        height: 45px;
+        margin-left: 20px;
     }
 
     .card-arrow svg {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
     }
 
     .ad-container {
-        margin: 20px 0 15px;
+        margin: 20px 0 25px;
     }
 
     .card-container {
@@ -565,13 +572,13 @@ footer {
 
     .loan-info {
         width: 100%;
-        margin-top: 30px;
-        border-radius: 12px;
-        padding: 20px;
+        margin-top: 1rem;
+        padding: 1rem;
     }
 
     .horizontal-card {
-        padding: 16px;
+        padding: 20px;
+        margin-bottom: 12px;
     }
 
     .main-content {
@@ -583,19 +590,17 @@ footer {
     }
     
     .pagination-button {
-        width: 36px;
-        height: 36px;
+        padding: 6px 10px;
+        font-size: 13px;
     }
 
     .no-posts {
-        padding: 40px 15px;
+        padding: 20px;
     }
 
     .hero {
         height: 200px;
-        background-image: url('trot-banner-tablet.jpg');
-        margin-bottom: 20px;
-        border-radius: 12px;
+        background-image: url('donsangt.jpg');
     }
 }
 
@@ -609,18 +614,16 @@ footer {
     }
 
     .logo {
-        font-size: 1.1rem;
-        gap: 6px;
+        font-size: 1.4rem;
     }
 
-    .logo-image {
-        width: 24px;
-        height: 24px;
+    .money-icon {
+        width: 20px;
+        height: 20px;
     }
 
     .login-icon {
-        width: 36px;
-        height: 36px;
+        padding: 4px;
     }
 
     .login-icon svg {
@@ -629,21 +632,23 @@ footer {
     }
 
     .horizontal-card {
-        padding: 14px;
+        padding: 15px 12px;
+        margin-bottom: 10px;
         border-radius: 10px;
     }
 
     .card-content h3 {
-        font-size: 1rem;
-        margin-bottom: 6px;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
     }
 
     .card-content p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 
     .loan-link-item h3 {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     .loan-link-item p {
@@ -655,7 +660,7 @@ footer {
     }
 
     .ad-container {
-        margin: 15px 0;
+        margin: 15px 0 15px;
     }
 
     .card-container {
@@ -676,13 +681,12 @@ footer {
     }
     
     .pagination-button {
-        width: 32px;
-        height: 32px;
-        font-size: 0.8rem;
+        padding: 5px 8px;
+        font-size: 12px;
     }
 
     .no-posts {
-        padding: 40px 15px;
+        padding: 15px;
     }
     
     .no-posts h2 {
@@ -695,8 +699,8 @@ footer {
 
     .hero {
         height: 150px;
-        background-image: url('trot-banner-mobile.jpg');
-        border-radius: 10px;
+        background-image: url('donsangm.jpg');
+        border-radius: 8px;
         border-width: 1px;
     }
 }
@@ -708,81 +712,97 @@ footer {
 }
 
 .login-icon {
+    color: #2c3e50;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #B22222;
-    transition: color 0.3s ease;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    background-color: transparent;
 }
 
 .login-icon:hover {
-    color: #8B0000;
-    background-color: rgba(178, 34, 34, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
 }
 
 .login-icon svg {
     width: 24px;
     height: 24px;
-    stroke-width: 2px;
 }
 
 /* 하단 광고 스타일 */
 .bottom-ad {
-    margin-top: 30px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 반응형 스타일 수정 */
+@media (max-width: 1140px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-icon svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* 페이지네이션 스타일 */
 .pagination {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    align-items: center;
     margin-top: 30px;
+    gap: 10px;
 }
 
 .pagination-button {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 4px;
+    color: #0b0b7c;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s;
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
 }
 
 .pagination-button:hover {
-    background: #FFF5F5;
+    background-color: #f5f5f5;
 }
 
 .pagination-button.active {
-    background: #B22222;
-    color: white;
-    border-color: #B22222;
+    background-color: #0b0b7c;
+    border-color: #0b0b7c;
+    color: #fff;
 }
 
 .pagination-button.disabled {
-    opacity: 0.5;
+    color: #ccc;
     cursor: not-allowed;
 }
 
 /* 게시글 없음 스타일 */
 .no-posts {
-    text-align: center;
-    padding: 60px 20px;
-    background: #fff;
+    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .no-posts h2 {
-    color: #B22222;
-    margin-bottom: 15px;
+    color: #0b0b7c;
+    margin-bottom: 10px;
 }
 
 .no-posts p {
