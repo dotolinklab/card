@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://card.dokbun2.com">
     <title>돈 되는 생활정보 "돈생"</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
 </head>
 <body>
     <header>
@@ -132,51 +132,54 @@
             <p>© 2025 DOTO NEWS • Built with dotolinklab </p>
         </div>
     </footer>
-    <script src="script.js"></script>
-    <script src="index.js"></script>
+    <script src="script.js" defer></script>
+    <script src="index.js" defer></script>
     <script>
-        // Supabase 클라이언트 초기화
-        const supabaseUrl = 'https://yyazjydfftyzruirhdzl.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5YXpqeWRmZnR5enJ1aXJoZHpsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NDYwOTU3NiwiZXhwIjoyMDYwMTg1NTc2fQ.adEDbWrLGYQDfkw_k6WlOgyFmk9Jc-Wh7tcYq0nky_4';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        // Supabase 클라이언트 초기화 -> index.js에서 수행하므로 제거
+        // const supabaseUrl = 'https://yyazjydfftyzruirhdzl.supabase.co';
+        // const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5YXpqeWRmZnR5enJ1aXJoZHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2MDk1NzYsImV4cCI6MjA2MDE4NTU3Nn0.5QwMPdA3Xnh8Nzhv8_I-PBzfOq4ZIhWAtMtQSz_lQX4'; // Anon key로 변경
+        // const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-        // 방문자 기록
+        // 방문자 기록 함수 정의 (호출은 주석 처리됨)
         async function recordVisit() {
             try {
-                const today = new Date().toISOString().split('T')[0];
-                const { data: existingVisit, error: checkError } = await supabase
-                    .from('visits')
-                    .select('*')
-                    .eq('date', today)
-                    .single();
+                // const today = new Date().toISOString().split('T')[0];
+                // const { data: existingVisit, error: checkError } = await supabase // 'supabase' 변수가 여기서는 정의되지 않음!
+                //     .from('visits')
+                //     .select('*')
+                //     .eq('date', today)
+                //     .single();
 
-                if (checkError && checkError.code !== 'PGRST116') {
-                    throw checkError;
-                }
+                // if (checkError && checkError.code !== 'PGRST116') { 
+                //     console.warn('Could not check existing visit. RLS policy might be blocking select.', checkError);
+                // }
 
-                if (existingVisit) {
-                    // 오늘 방문 기록이 있으면 카운트 증가
-                    const { error: updateError } = await supabase
-                        .from('visits')
-                        .update({ count: existingVisit.count + 1 })
-                        .eq('date', today);
+                // if (existingVisit) {
+                //     const { error: updateError } = await supabase // 'supabase' 변수가 여기서는 정의되지 않음!
+                //         .from('visits')
+                //         .update({ count: existingVisit.count + 1 })
+                //         .eq('date', today);
 
-                    if (updateError) throw updateError;
-                } else {
-                    // 오늘 첫 방문이면 새 기록 생성
-                    const { error: insertError } = await supabase
-                        .from('visits')
-                        .insert([{ date: today, count: 1 }]);
+                //     if (updateError) {
+                //         console.warn('Could not update visit count. RLS policy might be blocking update.', updateError);
+                //     }
+                // } else {
+                //     const { error: insertError } = await supabase // 'supabase' 변수가 여기서는 정의되지 않음!
+                //         .from('visits')
+                //         .insert([{ date: today, count: 1 }]);
 
-                    if (insertError) throw insertError;
-                }
+                //     if (insertError) {
+                //          console.warn('Could not insert new visit record. RLS policy might be blocking insert.', insertError);
+                //     }
+                // }
+                 console.warn('recordVisit function is currently disabled due to removed Supabase initialization.'); // 현재 비활성화됨 알림
             } catch (error) {
-                console.error('Error recording visit:', error);
+                console.error('Error in recordVisit function structure:', error);
             }
         }
 
-        // 페이지 로드 시 방문자 기록
-        recordVisit();
+        // 페이지 로드 시 방문자 기록 호출 부분은 이미 주석 처리됨
+        // recordVisit();
     </script>
 </body>
 </html>
